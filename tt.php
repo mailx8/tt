@@ -6,8 +6,8 @@
  */
 namespace TT;
 
-defined('APP_PATH') or define('APP_PATH', dirname((__DIR__)));
-defined('VENDOR_PATH') or define('VENDOR_PATH',(dirname(__DIR__)));
+defined('APP_PATH') or define('APP_PATH', dirname(dirname((__DIR__))));
+defined('VENDOR_PATH') or define('VENDOR_PATH',dirname(dirname(__DIR__)));
 
 abstract class TT{
 
@@ -65,4 +65,4 @@ abstract class TT{
         }
     }
 }
-TT::$classloader=require (VENDOR_PATH."/vendor/autoload.php");
+TT::$classloader=require (VENDOR_PATH."/autoload.php");
