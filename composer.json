@@ -1,5 +1,12 @@
 {
-	"name": "test",
+    "name": "mailx8/tt",
+    "description": "My first Simple Php Rramework ",
+    "authors": [
+      {
+        "name": "mindy",
+        "email": "50398712@qq.com"
+      }
+    ],
     "minimum-stability": "stable",
     "require": {
     	"php": ">=5.4.0"
