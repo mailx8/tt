@@ -58,6 +58,6 @@ abstract class Controller{
     public function getViewPath(){
         //controller
         $reflector = new \ReflectionClass($this);
-        return  dirname(dirname($reflector->getFileName()))."/".'views'."/".strtolower(substr($reflector->getShortName(),0,-10));
+        return  dirname($reflector->getFileName())."/".'views'."/".strtolower(substr($reflector->getShortName(),0,-10));
     }
 }
