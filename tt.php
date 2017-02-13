@@ -8,7 +8,7 @@ namespace TT;
 
 use DebugBar\StandardDebugBar;
 use TT\web\ErrorHandler;
-use TT\web\FileUtil;
+use TT\helpers\FileUtil;
 
 defined('APP_PATH') or define('APP_PATH', dirname(dirname(dirname(__DIR__))));
 defined('VENDOR_PATH') or define('VENDOR_PATH',dirname(dirname(__DIR__)));

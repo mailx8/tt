@@ -1,5 +1,5 @@
 <?php
-namespace TT\web;
+namespace TT\helpers;
 function dump_array(Array $data, $short = null)
 {
     $short = $short === null ? version_compare(File::$minPHP ?: PHP_VERSION, '5.4.0', '>=') : $short;
