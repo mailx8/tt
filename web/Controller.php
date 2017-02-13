@@ -1,11 +1,14 @@
 <?php
 namespace TT\web;
 use TT\TT;
+use DebugBar\DataCollector\ExceptionsCollector;
+use DebugBar\StandardDebugBar;
 
 abstract class Controller{
 
     private $layout='';
     private $content="";
+
 
     public function __construct()
     {

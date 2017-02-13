@@ -6,8 +6,14 @@
  */
 namespace TT;
 
-defined('APP_PATH') or define('APP_PATH', dirname(dirname((__DIR__))));
+use DebugBar\StandardDebugBar;
+use TT\web\ErrorHandler;
+use TT\web\FileUtil;
+
+defined('APP_PATH') or define('APP_PATH', dirname(dirname(dirname(__DIR__))));
 defined('VENDOR_PATH') or define('VENDOR_PATH',dirname(dirname(__DIR__)));
+defined('RUNTIME_PATH') or define('RUNTIME_PATH',APP_PATH."/runtime");
+defined('LOG_PATH') or define('LOG_PATH',APP_PATH."/runtime/log");
 
 abstract class TT{
 
@@ -47,6 +53,40 @@ abstract class TT{
         ];
         foreach($c as $k=>$v){
             self::$container[$k]=new $v();
+        }
+        FileUtil::createDirs(LOG_PATH);
+        (new ErrorHandler())->register();
+
+        if(self::getConfig("env")!="prod"){
+            $debugbar = new StandardDebugBar();
+            self::$container['debug']=$debugbar;
+        }
+    }
+
+    /**
+     * @return StandardDebugBar|mixed
+     */
+    public static function debug(){
+        $debug=self::getContainer("debug");
+        if(!$debug){
+           return false;
+        }
+        return $debug;
+    }
+
+    /**
+     * 添加调试信息
+     * @param $msg
+     */
+    public static function setDebugMessage($msg){
+        if(self::debug()){
+            self::debug()['messages']->addMessage($msg);
+        }
+    }
+
+    public static function setException($exception){
+        if(self::debug()){
+            self::debug()['exceptions']->addException($exception);
         }
     }
 
